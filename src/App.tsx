@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
-function App() {
+type Vik = {
+  title: string;
+  id: number;
+};
+
+const viktorins: Vik[] = [
+  {
+    title: "Вікторина JS",
+    id: 1,
+  },
+];
+
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {viktorins.map((item) => (
+        <div key={item.id}>
+          <h2>
+            <Link to="/viktorina">{item.title}</Link>
+          </h2>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default App;
